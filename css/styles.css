@@ -9,6 +9,17 @@
 
 .rounded {
     margin-left: 2rem;
-    height: 591px;
-    width: 443px;
+    max-width: 25%;
+    height: auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+.bio {
+    width: 50rem;
+    margin-left: 8rem;
+    margin-top: 2rem;
+    flex-direction: column;
 }
