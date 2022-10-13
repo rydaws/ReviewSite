@@ -24,3 +24,11 @@
     margin-top: 2rem;
     flex-direction: column;
 }
+
+.submitButton {
+    padding-top: 10px;
+}
+
+.starGroup {
+    padding-bottom: 10px;
+}
