@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/index.js"></script>
     <title>Ryan's Reviews</title>
 </head>
 
@@ -41,11 +42,11 @@
     <div class="container text-center">
         <div class="row">
             <div class="col">
-                <form>
+                <form name="reviewForm">
                     <!-- Contains stars -->
                     <div class="starGroup">
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked>
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" value="1" checked>
                             <label class="btn btn-outline-warning" for="btnradio1"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -53,8 +54,7 @@
                                         d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                 </svg></label>
 
-
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" value="2">
                             <label class="btn btn-outline-warning" for="btnradio2"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -62,7 +62,7 @@
                                         d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                 </svg></label>
 
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" value="3">
                             <label class="btn btn-outline-warning" for="btnradio3"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -70,7 +70,7 @@
                                         d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                 </svg></label>
 
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio4">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio4" value="4">
                             <label class="btn btn-outline-warning" for="btnradio4"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -78,7 +78,7 @@
                                         d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                 </svg></label>
 
-                            <input type="radio" class="btn-check" name="btnradio" id="btnradio5">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio5" value="5">
                             <label class="btn btn-outline-warning" for="btnradio5"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -89,7 +89,11 @@
                     </div>
                     <!-- Author name textbox-->
                     <div class="mb-3">
-                        <input class="form-control" type="text" placeholder="Author's Name" aria-label="Author's Name">
+                        <input class="form-control" type="text" placeholder="Author's Name" aria-label="Author's Name" id="authName">
+                    </div>
+                    <!-- Book title textbox -->
+                    <div class="mb-3">
+                        <input class="form-control" type="text" placeholder="Book Title" aria-label="Book Title" id="bookTitle">
                     </div>
                     <!-- Textbox to leave review -->
                     <div class="form-floating">
@@ -99,7 +103,7 @@
                     </div>
                     <!-- Submits review to be posted -->
                     <div class="submitButton">
-                        <button type="submit" class="btn btn-success">Submit Review</button>
+                        <button type="button" class="btn btn-success" onclick="review()">Preview</button>
                     </div>
                 </form>
 
@@ -109,26 +113,28 @@
             <!-- Preview of what will be submitted -->
             <div class="col">
                 <h3>Preview</h3>
-                <h5>Ryan Dawson</h5>
-                5
+                <h5 id="authFillIn"></h5>
+                <h5 id="previewTitle"></h5>
+                <div class="display">
+                <div id="result"></div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-star-fill" viewBox="0 0 16 16">
+                    class="text-warning" viewBox="0 0 16 16">
                     <path
                         d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                 </svg>
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt est quis egestas porttitor.
-                Aliquam eget odio commodo, dapibus enim nec, cursus lacus. Nullam rutrum dui velit, quis suscipit mauris
-                aliquet in. Duis sagittis, dolor id lacinia dapibus, urna nisi tristique ipsum, vel condimentum nunc
-                magna nec magna. Aenean eget nisl ipsum. Phasellus lobortis, turpis et rutrum lacinia, neque quam
-                placerat magna, eu commodo augue ex quis neque. Nullam lobortis erat justo, ut congue ante viverra
-                tempus. Mauris quis tellus sit amet nisl vestibulum interdum eu id risus.
             </div>
+                <br>
+                <div id="previewMsg"></div>
+                <div class="submitButton">
+                    <button type="button" class="btn btn-success" onclick="submit()">Submit</button>
+                </div>
+            </div>
+            
         </div>
     </div>
 
     <!-- Footer with intrapage link and email -->
-    <footer>
+    <footer class="fixed-bottom">
         <p><a href="#top" class="email">Go to top</a></p>
         <a href="mailto:rdawson@albany.edu" class="email">
             <img src="../img/envelope.svg" class="mailImg" alt="Mail Icon">

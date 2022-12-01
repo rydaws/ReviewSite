@@ -36,3 +36,10 @@
 .starGroup {
     padding-bottom: 10px;
 }
+
+.display {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
